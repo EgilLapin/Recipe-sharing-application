@@ -6,7 +6,7 @@ import java.util.List;
 public class User {
     //(id, name, list of recipes, list of comments)
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO )
     private Long userId;
     private String userName;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "recipeId")

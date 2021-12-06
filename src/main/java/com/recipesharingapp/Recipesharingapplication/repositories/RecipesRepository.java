@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface RecipesRepository extends JpaRepository<Recipes,Long> {
 
-    @Query("select x.recipeName from Recipes x where x.userId = ?1")
-    List<Recipes> getRecipesByUser(Long userId);
+    List<Recipes> findByUser_UserId(Long userId);
 
 }

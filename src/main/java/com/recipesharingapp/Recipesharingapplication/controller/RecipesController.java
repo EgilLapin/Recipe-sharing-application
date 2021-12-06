@@ -19,7 +19,7 @@ public class RecipesController {
 
     @Autowired
     private RecipesService recipesService;
-   @Autowired
+    @Autowired
     private UserService userService;
     // Create recipe
     @PostMapping("/recipes")
@@ -49,8 +49,8 @@ public class RecipesController {
         return "Recipe Deleted!";
     }
     //- Get all recipes made by user by userId
-    @GetMapping("userrecipes/{userid}")
-    public List<Recipes> getRecipesByUser(@PathVariable("userid") Long userId){
-        return recipesService.getRecipesByUser(userId);
+    @GetMapping("userrecipes/{userId}")
+    public List<Recipes> findByUser_UserId(@PathVariable("userId") Long userId){
+        return recipesService.findByUser_UserId(userId);
     }
 }

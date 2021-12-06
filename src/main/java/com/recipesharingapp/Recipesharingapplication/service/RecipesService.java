@@ -41,8 +41,8 @@ public class RecipesService {
         recipesRepository.deleteById(recipeId);
     }
 
-    public List<Recipes> getRecipesByUser(Long userId) {
-        List<Recipes> recipeDB =  recipesRepository.getRecipesByUser(userId).stream().toList();
+    public List<Recipes> findByUser_UserId(Long userId) {
+        List<Recipes> recipeDB =  recipesRepository.findByUser_UserId(userId).stream().toList();
         return recipeDB;
     }
 }
