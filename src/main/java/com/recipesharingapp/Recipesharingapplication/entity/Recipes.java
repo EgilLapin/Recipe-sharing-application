@@ -12,8 +12,6 @@ public class Recipes {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "commentId")
-    private List<Comment> comment;
 
     public Long getRecipeId() {
         return recipeId;
@@ -39,19 +37,11 @@ public class Recipes {
         this.user = user;
     }
 
-    public List<Comment> getComment() {
-        return comment;
-    }
 
-    public void setComment(List<Comment> comment) {
-        this.comment = comment;
-    }
-
-    public Recipes(Long recipeId, String recipeName, User user, List<Comment> comment) {
+    public Recipes(Long recipeId, String recipeName, User user) {
         this.recipeId = recipeId;
         this.recipeName = recipeName;
         this.user = user;
-        this.comment = comment;
     }
 
     public Recipes() {
@@ -63,7 +53,6 @@ public class Recipes {
                 "recipeId=" + recipeId +
                 ", recipeName='" + recipeName + '\'' +
                 ", user=" + user +
-                ", comment=" + comment +
                 '}';
     }
 }

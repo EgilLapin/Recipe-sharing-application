@@ -21,6 +21,7 @@ public class RecipesController {
     private RecipesService recipesService;
     @Autowired
     private UserService userService;
+
     // Create recipe
     @PostMapping("/recipes")
     public Recipes createUser(@RequestBody Recipes recipes){
@@ -41,16 +42,10 @@ public class RecipesController {
     public Recipes updateRecipeById(@PathVariable("id") Long recipeId,@RequestBody Recipes recipes){
         return recipesService.updateRecipeById(recipeId,recipes);
     }
-
     //- Delete recipe by id
     @DeleteMapping("recipes/{id}")
     public String deleteRecipeById(@PathVariable("id") Long recipeId){
         recipesService.deleteRecipeById(recipeId);
         return "Recipe Deleted!";
-    }
-    //- Get all recipes made by user by userId
-    @GetMapping("userrecipes/{userId}")
-    public List<Recipes> findByUser_UserId(@PathVariable("userId") Long userId){
-        return recipesService.findByUser_UserId(userId);
     }
 }

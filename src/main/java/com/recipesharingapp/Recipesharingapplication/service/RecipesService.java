@@ -33,7 +33,6 @@ public class RecipesService {
         Recipes recipeDB = recipesRepository.findById(recipeId).get();
         recipeDB.setRecipeName(recipes.getRecipeName());
         recipeDB.setUser(recipes.getUser());
-        recipeDB.setComment(recipes.getComment());
         return recipesRepository.save(recipeDB);
     }
 
@@ -41,8 +40,4 @@ public class RecipesService {
         recipesRepository.deleteById(recipeId);
     }
 
-    public List<Recipes> findByUser_UserId(Long userId) {
-        List<Recipes> recipeDB =  recipesRepository.findByUser_UserId(userId).stream().toList();
-        return recipeDB;
-    }
 }

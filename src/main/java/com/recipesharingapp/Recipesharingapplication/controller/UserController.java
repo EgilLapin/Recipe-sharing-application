@@ -12,6 +12,7 @@ public class UserController {
 
     @Autowired
     private UserService userservice;
+
     //- Create user
     @PostMapping("/users")
     public User createUser(@RequestBody User user){
@@ -32,7 +33,6 @@ public class UserController {
     public User updateUserById(@PathVariable("id") Long userId,@RequestBody User user){
         return userservice.updateUserById(userId, user);
     }
-
     //- Delete user by id
     @DeleteMapping("users/{id}")
     public String deleteUserById(@PathVariable("id") Long userId){

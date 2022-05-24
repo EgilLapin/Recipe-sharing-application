@@ -11,6 +11,4 @@ import java.util.List;
 @Repository
 public interface RecipesRepository extends JpaRepository<Recipes,Long> {
 
-    List<Recipes> findByUser_UserId(Long userId);
-
 }
