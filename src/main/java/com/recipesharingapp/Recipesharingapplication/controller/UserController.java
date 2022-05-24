@@ -23,16 +23,13 @@ public class UserController {
     public List<User> fetchUserList(){
         return userservice.fetchUserList();
     }
+
     //- Get user by id
     @GetMapping("/users/{id}")
     public User fetchUserById(@PathVariable("id") Long userId){
         return userservice.fetchUserById(userId);
     }
-    //- Update user by id
-    @PutMapping("/users/{id}")
-    public User updateUserById(@PathVariable("id") Long userId,@RequestBody User user){
-        return userservice.updateUserById(userId, user);
-    }
+
     //- Delete user by id
     @DeleteMapping("users/{id}")
     public String deleteUserById(@PathVariable("id") Long userId){

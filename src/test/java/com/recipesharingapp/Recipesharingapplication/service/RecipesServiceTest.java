@@ -19,10 +19,6 @@ class RecipesServiceTest {
     }
 
     @Test
-    void updateRecipeById() {
-    }
-
-    @Test
     void deleteRecipeById() {
     }
 }

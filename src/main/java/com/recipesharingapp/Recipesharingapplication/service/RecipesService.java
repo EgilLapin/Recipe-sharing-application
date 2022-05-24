@@ -29,13 +29,6 @@ public class RecipesService {
         return recipesRepository.findById(recipeId).get();
     }
 
-    public Recipes updateRecipeById(Long recipeId, Recipes recipes) {
-        Recipes recipeDB = recipesRepository.findById(recipeId).get();
-        recipeDB.setRecipeName(recipes.getRecipeName());
-        recipeDB.setUser(recipes.getUser());
-        return recipesRepository.save(recipeDB);
-    }
-
     public void deleteRecipeById(Long recipeId) {
         recipesRepository.deleteById(recipeId);
     }

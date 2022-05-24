@@ -27,21 +27,19 @@ public class RecipesController {
     public Recipes createUser(@RequestBody Recipes recipes){
         return recipesService.createRecipe(recipes);
     }
+
     //- Get recipe by id
     @GetMapping("/recipes/{id}")
     public Recipes getRecipe(@PathVariable("id") Long recipeId){
         return recipesService.getRecipebyId(recipeId);
     }
+
     //Get all receipes
     @GetMapping("/recipes")
     public List<Recipes> getRecipeList(){
         return recipesService.getRecipeList();
     }
-    //- Update recipe by id
-    @PutMapping("/recipes/{id}")
-    public Recipes updateRecipeById(@PathVariable("id") Long recipeId,@RequestBody Recipes recipes){
-        return recipesService.updateRecipeById(recipeId,recipes);
-    }
+
     //- Delete recipe by id
     @DeleteMapping("recipes/{id}")
     public String deleteRecipeById(@PathVariable("id") Long recipeId){

@@ -19,10 +19,6 @@ class UserControllerTest {
     }
 
     @Test
-    void updateUserById() {
-    }
-
-    @Test
     void deleteUserById() {
     }
 }

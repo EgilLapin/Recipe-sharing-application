@@ -30,12 +30,4 @@ public class UserService {
          userRepository.deleteById(userId);
     }
 
-    public User updateUserById(Long userId, User user) {
-         User userDB = userRepository.findById(userId).get();
-
-         if(Objects.nonNull(user.getUserName())&&!"".equalsIgnoreCase(user.getUserName())){
-             userDB.setUserName(user.getUserName());
-         }
-        return userRepository.save(userDB);
-    }
 }

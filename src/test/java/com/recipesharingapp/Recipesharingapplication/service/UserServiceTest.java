@@ -22,7 +22,4 @@ class UserServiceTest {
     void deleteUserById() {
     }
 
-    @Test
-    void updateUserById() {
-    }
 }

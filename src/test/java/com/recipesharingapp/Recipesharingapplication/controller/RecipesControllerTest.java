@@ -19,10 +19,6 @@ class RecipesControllerTest {
     }
 
     @Test
-    void updateRecipeById() {
-    }
-
-    @Test
     void deleteRecipeById() {
     }
 }
