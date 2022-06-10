@@ -1,13 +1,12 @@
 package com.recipesharingapp.Recipesharingapplication.controller;
 
-import com.recipesharingapp.Recipesharingapplication.entity.Recipes;
-import com.recipesharingapp.Recipesharingapplication.entity.User;
-import com.recipesharingapp.Recipesharingapplication.service.RecipesService;
-import com.recipesharingapp.Recipesharingapplication.service.UserService;
+import com.recipesharingapp.Recipesharingapplication.mapstruct.dtos.RecipesDTO;
+import com.recipesharingapp.Recipesharingapplication.mapstruct.mapper.MapStructMapper;
+import com.recipesharingapp.Recipesharingapplication.repositories.RecipesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 // Create recipe
 //- Get recipe by id
@@ -18,32 +17,36 @@ import java.util.List;
 public class RecipesController {
 
     @Autowired
-    private RecipesService recipesService;
+    private RecipesRepository recipesRepository;
     @Autowired
-    private UserService userService;
+    private MapStructMapper mapstructMapper;
 
     // Create recipe
     @PostMapping("/recipes")
-    public Recipes createUser(@RequestBody Recipes recipes){
-        return recipesService.createRecipe(recipes);
+    public ResponseEntity<Void> createUser(
+            @RequestBody RecipesDTO recipesDTO
+    ) {
+
+        recipesRepository.save(
+                mapstructMapper.recipesDTOToRecipes(recipesDTO)
+        );
+
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    //- Get recipe by id
-    @GetMapping("/recipes/{id}")
-    public Recipes getRecipe(@PathVariable("id") Long recipeId){
-        return recipesService.getRecipebyId(recipeId);
-    }
 
     //Get all receipes
-    @GetMapping("/recipes")
-    public List<Recipes> getRecipeList(){
-        return recipesService.getRecipeList();
+    @GetMapping("/recipes/{id}")
+    public ResponseEntity<RecipesDTO> getById(
+            @PathVariable(value = "id") Long id
+    ) {
+        return new ResponseEntity<>(
+                mapstructMapper.recipesToRecipesDTO(
+                        recipesRepository.findById(id).get()
+                ),
+                HttpStatus.OK
+        );
     }
 
-    //- Delete recipe by id
-    @DeleteMapping("recipes/{id}")
-    public String deleteRecipeById(@PathVariable("id") Long recipeId){
-        recipesService.deleteRecipeById(recipeId);
-        return "Recipe Deleted!";
-    }
 }

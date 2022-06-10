@@ -1,8 +1,5 @@
 package com.recipesharingapp.Recipesharingapplication;
 
-import com.recipesharingapp.Recipesharingapplication.controller.RecipesController;
-import com.recipesharingapp.Recipesharingapplication.entity.User;
-import com.recipesharingapp.Recipesharingapplication.service.RecipesService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

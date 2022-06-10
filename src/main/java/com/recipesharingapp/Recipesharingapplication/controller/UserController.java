@@ -1,8 +1,12 @@
 package com.recipesharingapp.Recipesharingapplication.controller;
 
 import com.recipesharingapp.Recipesharingapplication.entity.User;
-import com.recipesharingapp.Recipesharingapplication.service.UserService;
+import com.recipesharingapp.Recipesharingapplication.mapstruct.dtos.UserDTO;
+import com.recipesharingapp.Recipesharingapplication.mapstruct.mapper.MapStructMapper;
+import com.recipesharingapp.Recipesharingapplication.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,29 +15,31 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userservice;
+    private UserRepository userRepository;
+    @Autowired
+    private MapStructMapper mapstructMapper;
 
-    //- Create user
     @PostMapping("/users")
-    public User createUser(@RequestBody User user){
-       return userservice.createUser(user);
+    public ResponseEntity<Void> createUser(
+            @RequestBody UserDTO userDto
+    ) {
+        userRepository.save(
+                mapstructMapper.userDTOToUser(userDto)
+        );
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("/users")
-    public List<User> fetchUserList(){
-        return userservice.fetchUserList();
-    }
-
-    //- Get user by id
     @GetMapping("/users/{id}")
-    public User fetchUserById(@PathVariable("id") Long userId){
-        return userservice.fetchUserById(userId);
+    public ResponseEntity<UserDTO> getById(
+            @PathVariable(value = "id") Long id
+    ) {
+        return new ResponseEntity<>(
+                mapstructMapper.userToUserDTO(
+                        userRepository.findById(id).get()
+                ),
+                HttpStatus.OK
+        );
     }
 
-    //- Delete user by id
-    @DeleteMapping("users/{id}")
-    public String deleteUserById(@PathVariable("id") Long userId){
-        userservice.deleteUserById(userId);
-        return "User Deleted!";
-    }
 }
