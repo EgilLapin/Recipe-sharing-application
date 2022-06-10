@@ -11,14 +11,6 @@ class UserControllerTest {
     }
 
     @Test
-    void fetchUserList() {
-    }
-
-    @Test
-    void fetchUserById() {
-    }
-
-    @Test
-    void deleteUserById() {
+    void getById() {
     }
 }

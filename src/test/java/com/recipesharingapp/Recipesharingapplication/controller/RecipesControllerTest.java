@@ -11,14 +11,6 @@ class RecipesControllerTest {
     }
 
     @Test
-    void getRecipe() {
-    }
-
-    @Test
-    void getRecipeList() {
-    }
-
-    @Test
-    void deleteRecipeById() {
+    void getById() {
     }
 }
