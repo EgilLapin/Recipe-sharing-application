@@ -1,10 +1,8 @@
 package com.recipesharingapp.Recipesharingapplication.entity;
 
 import javax.persistence.*;
-import java.util.List;
 @Entity
 public class Recipes {
-    //id, name, recipeText, user (who made the recipe), list of comments
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long recipeId;

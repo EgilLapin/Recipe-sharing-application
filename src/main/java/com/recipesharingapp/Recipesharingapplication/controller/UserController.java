@@ -1,6 +1,5 @@
 package com.recipesharingapp.Recipesharingapplication.controller;
 
-import com.recipesharingapp.Recipesharingapplication.entity.User;
 import com.recipesharingapp.Recipesharingapplication.mapstruct.dtos.UserDTO;
 import com.recipesharingapp.Recipesharingapplication.mapstruct.mapper.MapStructMapper;
 import com.recipesharingapp.Recipesharingapplication.repositories.UserRepository;
@@ -8,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 public class UserController {

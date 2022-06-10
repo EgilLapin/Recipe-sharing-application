@@ -4,7 +4,6 @@ import javax.persistence.*;
 import java.util.List;
 @Entity
 public class User {
-    //(id, name, list of recipes, list of comments)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO )
     private Long userId;
