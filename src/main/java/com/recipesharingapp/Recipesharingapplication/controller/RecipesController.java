@@ -17,7 +17,7 @@ public class RecipesController {
     private MapStructMapper mapstructMapper;
 
     @PostMapping("/recipes")
-    public ResponseEntity<Void> createUser(
+    public ResponseEntity<Void> createRecipe(
             @RequestBody RecipesDTO recipesDTO
     ) {
 
