@@ -29,16 +29,4 @@ public class RecipesController {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @GetMapping("/recipes/{id}")
-    public ResponseEntity<RecipesDTO> getById(
-            @PathVariable(value = "id") Long id
-    ) {
-        return new ResponseEntity<>(
-                mapstructMapper.recipesToRecipesDTO(
-                        recipesRepository.findById(id).get()
-                ),
-                HttpStatus.OK
-        );
-    }
-
 }

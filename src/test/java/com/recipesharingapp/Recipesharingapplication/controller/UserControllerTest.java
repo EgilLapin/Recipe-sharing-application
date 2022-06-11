@@ -1,8 +1,8 @@
 package com.recipesharingapp.Recipesharingapplication.controller;
 
+import com.recipesharingapp.Recipesharingapplication.entity.User;
 import com.recipesharingapp.Recipesharingapplication.mapstruct.dtos.UserDTO;
 import com.recipesharingapp.Recipesharingapplication.repositories.UserRepository;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,26 +22,27 @@ class UserControllerTest {
     @Autowired
     UserController userController;
 
-    @Before
-    public UserDTO createTestUser(){
-        UserDTO testUserDTO = new UserDTO();;
-        testUserDTO.setUserId(1L);
-        testUserDTO.setUserName("EgilsTest");
-        return testUserDTO;
-    }
+    @Autowired
+    UserRepository userRepository;
 
     @Test
     void createUser() {
-        UserDTO testUserDTO = createTestUser();
+        UserDTO testUserDTO = new UserDTO();;
+        testUserDTO.setUserId(1L);
+        testUserDTO.setUserName("EgilsTest");
         ResponseEntity response = userController.createUser(testUserDTO);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        userRepository.deleteAll();
     }
 
     @Test
     void getById() {
-        UserDTO testUserDTO = createTestUser();
-        userController.createUser(testUserDTO);
+        User testUser = new User();;
+        testUser.setUserId(1L);
+        testUser.setUserName("EgilsTest2");
+        userRepository.save(testUser);
         ResponseEntity response = userController.getById(1L);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+        userRepository.deleteAll();
     }
 }
