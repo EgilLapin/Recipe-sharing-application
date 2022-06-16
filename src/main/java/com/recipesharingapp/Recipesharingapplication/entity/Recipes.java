@@ -7,9 +7,7 @@ public class Recipes {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long recipeId;
     private String recipeName;
-    @ManyToOne
-    @JoinColumn(name = "userId")
-    private User user;
+    private String user;
 
     public Long getRecipeId() {
         return recipeId;
@@ -27,16 +25,16 @@ public class Recipes {
         this.recipeName = recipeName;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 
 
-    public Recipes(Long recipeId, String recipeName, User user) {
+    public Recipes(Long recipeId, String recipeName, String user) {
         this.recipeId = recipeId;
         this.recipeName = recipeName;
         this.user = user;

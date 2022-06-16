@@ -1,15 +1,20 @@
 package com.recipesharingapp.Recipesharingapplication.mapstruct.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.recipesharingapp.Recipesharingapplication.entity.User;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "recipes")
 public class RecipesDTO {
+        @Id
+        @GeneratedValue(strategy = GenerationType.AUTO)
         @JsonProperty("recipeId")
         private Long recipeId;
         @JsonProperty("recipeName")
         private String recipeName;
         @JsonProperty("user")
-        private User user;
+        private String user;
 
     public Long getRecipeId() {
         return recipeId;
@@ -27,11 +32,11 @@ public class RecipesDTO {
         this.recipeName = recipeName;
     }
 
-    public User getUser() {
+    public String getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(String user) {
         this.user = user;
     }
 }
