@@ -1,12 +1,17 @@
 package com.recipesharingapp.recipesharingapplication.entity;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 @Entity
 public class Recipes {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long recipeId;
+    @NotNull
     private String recipeName;
+    @NotNull
     private String user;
 
     public Long getRecipeId() {

@@ -10,8 +10,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.jdbc.Sql;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class IntegrationTest {
@@ -30,6 +29,12 @@ class IntegrationTest {
     }
 
     @Test
+    void findInvalidRecipesByIdIntegrationTest(){
+        ResponseEntity<Recipes> response = testRestTemplate.getForEntity("/recipes/666", Recipes.class);
+        assertTrue(response.getStatusCode().is4xxClientError());
+    }
+
+    @Test
     void createRecipeIntegrationTest(){
         Recipes recipes = new Recipes();
         recipes.setRecipeName("TestBurger2");
@@ -41,7 +46,23 @@ class IntegrationTest {
         assertNotNull(response.getBody().getRecipeId());
         assertEquals("TestBurger2", response.getBody().getRecipeName());
         assertEquals("TestUser2", response.getBody().getUser());
-
-
     }
+
+    @Test
+    void createInvalidRecipeNameIntegrationTest(){
+        Recipes recipes = new Recipes();
+        recipes.setRecipeName(null);
+        HttpEntity<Recipes> request = new HttpEntity<>(recipes);
+        ResponseEntity<Recipes> response = testRestTemplate.postForEntity("/recipes",request,Recipes.class);
+        assertTrue(response.getStatusCode().is4xxClientError());
+    }
+    @Test
+    void createInvalidRecipeUserNameIntegrationTest(){
+        Recipes recipes = new Recipes();
+        recipes.setUser(null);
+        HttpEntity<Recipes> request = new HttpEntity<>(recipes);
+        ResponseEntity<Recipes> response = testRestTemplate.postForEntity("/recipes",request,Recipes.class);
+        assertTrue(response.getStatusCode().is4xxClientError());
+    }
+
 }

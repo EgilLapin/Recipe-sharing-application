@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.GeneratedValue;
+import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
@@ -21,11 +23,13 @@ public class RecipesController {
 
     @PostMapping("/recipes")
     public ResponseEntity<Recipes> createRecipe(
-            @RequestBody Recipes recipes, BindingResult bindingResult) {
+            @RequestBody @Valid Recipes recipes, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
+
+
       Recipes recipeSaved = recipesService.createRecipe(recipes);
         return new ResponseEntity<>(recipeSaved, HttpStatus.CREATED);
     }

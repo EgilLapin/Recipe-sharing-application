@@ -3,6 +3,7 @@ package com.recipesharingapp.recipesharingapplication.mapstruct.dtos;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "recipes")
