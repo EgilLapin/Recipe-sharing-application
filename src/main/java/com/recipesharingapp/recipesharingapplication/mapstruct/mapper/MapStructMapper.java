@@ -1,7 +1,7 @@
-package com.recipesharingapp.Recipesharingapplication.mapstruct.mapper;
+package com.recipesharingapp.recipesharingapplication.mapstruct.mapper;
 
-import com.recipesharingapp.Recipesharingapplication.entity.Recipes;
-import com.recipesharingapp.Recipesharingapplication.mapstruct.dtos.RecipesDTO;
+import com.recipesharingapp.recipesharingapplication.entity.Recipes;
+import com.recipesharingapp.recipesharingapplication.mapstruct.dtos.RecipesDTO;
 import org.mapstruct.Mapper;
 
 @Mapper(

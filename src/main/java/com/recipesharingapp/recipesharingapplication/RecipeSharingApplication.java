@@ -1,4 +1,4 @@
-package com.recipesharingapp.Recipesharingapplication;
+package com.recipesharingapp.recipesharingapplication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,10 +1,10 @@
-package com.recipesharingapp.Recipesharingapplication.service;
+package com.recipesharingapp.recipesharingapplication.service;
 
 
-import com.recipesharingapp.Recipesharingapplication.entity.Recipes;
-import com.recipesharingapp.Recipesharingapplication.mapstruct.dtos.RecipesDTO;
-import com.recipesharingapp.Recipesharingapplication.mapstruct.mapper.MapStructMapper;
-import com.recipesharingapp.Recipesharingapplication.repositories.RecipesRepository;
+import com.recipesharingapp.recipesharingapplication.entity.Recipes;
+import com.recipesharingapp.recipesharingapplication.mapstruct.dtos.RecipesDTO;
+import com.recipesharingapp.recipesharingapplication.mapstruct.mapper.MapStructMapper;
+import com.recipesharingapp.recipesharingapplication.repositories.RecipesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,9 +27,8 @@ public class RecipesService {
     }
 
     public Optional<Recipes> findRecipesById (Long id) {
-        Optional<Recipes> recipefound = recipesRepository.findById(id)
+        return recipesRepository.findById(id)
                 .flatMap(recipes -> Optional.ofNullable(mapstructMapper.recipesDTOToRecipes(recipes)));
-        return recipefound;
     }
 
 }

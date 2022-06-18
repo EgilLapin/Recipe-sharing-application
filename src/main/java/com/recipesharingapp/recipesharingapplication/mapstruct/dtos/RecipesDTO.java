@@ -1,4 +1,4 @@
-package com.recipesharingapp.Recipesharingapplication.mapstruct.dtos;
+package com.recipesharingapp.recipesharingapplication.mapstruct.dtos;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Table(name = "recipes")
 public class RecipesDTO {
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @JsonProperty("recipeId")
         private Long recipeId;
         @JsonProperty("recipeName")

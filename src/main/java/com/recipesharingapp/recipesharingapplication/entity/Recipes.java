@@ -1,10 +1,10 @@
-package com.recipesharingapp.Recipesharingapplication.entity;
+package com.recipesharingapp.recipesharingapplication.entity;
 
 import javax.persistence.*;
 @Entity
 public class Recipes {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long recipeId;
     private String recipeName;
     private String user;
