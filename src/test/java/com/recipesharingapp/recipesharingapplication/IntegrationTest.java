@@ -2,6 +2,8 @@ package com.recipesharingapp.recipesharingapplication;
 
 
 import com.recipesharingapp.recipesharingapplication.entity.Recipes;
+import com.recipesharingapp.recipesharingapplication.mapstruct.dtos.RecipesDTO;
+import com.recipesharingapp.recipesharingapplication.repositories.RecipesRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -18,10 +20,17 @@ class IntegrationTest {
     @Autowired
     private TestRestTemplate testRestTemplate;
 
+    @Autowired
+    private RecipesRepository repository;
+
 
     @Test
-    @Sql("/test.sql")
     void findRecipesByIdIntegrationTest(){
+        RecipesDTO testRecipe = new RecipesDTO();
+        testRecipe.setRecipeId(1L);
+        testRecipe.setRecipeName("TestBurger1");
+        testRecipe.setUser("TestUser1");
+        repository.save(testRecipe);
         ResponseEntity<Recipes> response = testRestTemplate.getForEntity("/recipes/1", Recipes.class);
         assertEquals(1, response.getBody().getRecipeId());
         assertEquals("TestBurger1", response.getBody().getRecipeName());
