@@ -1,4 +1,4 @@
-package com.recipesharingapp.recipesharingapplication.tests;
+package com.recipesharingapp.recipesharingapplication;
 
 
 import com.recipesharingapp.recipesharingapplication.entity.Recipes;
@@ -56,6 +56,7 @@ class IntegrationTest {
         ResponseEntity<Recipes> response = testRestTemplate.postForEntity("/recipes",request,Recipes.class);
         assertTrue(response.getStatusCode().is4xxClientError());
     }
+
     @Test
     void createInvalidRecipeUserNameIntegrationTest(){
         Recipes recipes = new Recipes();
@@ -64,5 +65,4 @@ class IntegrationTest {
         ResponseEntity<Recipes> response = testRestTemplate.postForEntity("/recipes",request,Recipes.class);
         assertTrue(response.getStatusCode().is4xxClientError());
     }
-
 }

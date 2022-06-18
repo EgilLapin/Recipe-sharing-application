@@ -1,4 +1,4 @@
-package com.recipesharingapp.recipesharingapplication.tests;
+package com.recipesharingapp.recipesharingapplication.controller;
 
 import com.recipesharingapp.recipesharingapplication.entity.Recipes;
 import com.recipesharingapp.recipesharingapplication.mapstruct.mapper.MapStructMapper;
@@ -9,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.GeneratedValue;
 import javax.validation.Valid;
 import java.util.Optional;
 
