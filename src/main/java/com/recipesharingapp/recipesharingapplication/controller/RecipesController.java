@@ -1,7 +1,6 @@
 package com.recipesharingapp.recipesharingapplication.controller;
 
 import com.recipesharingapp.recipesharingapplication.entity.Recipes;
-import com.recipesharingapp.recipesharingapplication.mapstruct.mapper.MapStructMapper;
 import com.recipesharingapp.recipesharingapplication.service.RecipesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,8 +16,6 @@ public class RecipesController {
 
     @Autowired
     private RecipesService recipesService;
-    @Autowired
-    private MapStructMapper mapstructMapper;
 
     @PostMapping("/recipes")
     public ResponseEntity<Recipes> createRecipe(
