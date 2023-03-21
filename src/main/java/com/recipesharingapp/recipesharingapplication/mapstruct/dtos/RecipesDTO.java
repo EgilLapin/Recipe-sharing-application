@@ -15,7 +15,7 @@ public class RecipesDTO {
         @JsonProperty("recipeName")
         private String recipeName;
         @JsonProperty("user")
-        private String user;
+        private String userName;
 
     public Long getRecipeId() {
         return recipeId;
